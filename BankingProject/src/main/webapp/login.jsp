@@ -8,6 +8,13 @@
 <link rel="stylesheet" type="text/css" href="style/login.css">
 </head>
 <body>
+<input type="hidden" id="msg" value="${ loginerror }"> 
+<script>
+var msg = document.getElementById("msg").value;
+if(msg.equals("YES")){
+	alert("Please Login First!!");
+}
+</script>
 <div class="mainDiv">
     <div class="main">
     <div class="leftdiv">

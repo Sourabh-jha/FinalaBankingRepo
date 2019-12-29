@@ -75,6 +75,7 @@ public class LoginController {
 			return "openAccount.jsp";
 		}
 		else {
+			model.put("loginerror", "Yes");
 			return "login.jsp";
 		}
 	}

@@ -14,10 +14,10 @@
 </div>
 <div class="mainContent">
 <div class="leftsidenav">
-<div class="navOptions"><a href="accountDetail.jsp">Account Detail</a></div>
-<div class="navOptions"><a href="accountSummary.jsp">Account Summary</a></div>
-<div class="navOptions"><a href="fundTransfer.jsp">Fund Transfer</a></div>
-<div class="navOptions"><a href="AccountStatement.jsp">Account Statement</a></div>
+<div class="navOptions"><form action="dashboardaccDetail.lti" method="post"><input type="submit" name="submit" value="Account Detail"></form></div>
+<div class="navOptions"><form action="dashboardaccSummary.jsp" method="post"><input type="submit" name="submit" value="Account Summary"></form></div>
+<div class="navOptions"><form action="dashboardfundTransfer.jsp" method="post"><input type="submit" name="submit" value="Fund Transfer"></form></div>
+<div class="navOptions"><form action="dashboardaccStatement.jsp" method="post"><input type="submit" name="submit" value="Account Statement"></form></div>
 </div>
 <div class="rightsidenav">
 <div class="navbar">
@@ -37,9 +37,7 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="accountDetail.jsp">Account Details</a>
     </div>
   </div> 
   <div class="dropdown">
@@ -47,9 +45,7 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="forgot-password.jsp">Forgot Password</a>
     </div>
   </div>
 </div>

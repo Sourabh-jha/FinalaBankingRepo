@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,21 +21,6 @@ cursor: pointer;
 </style>
 </head>
 <body>
-<%@page import="java.io.*, java.util.*, java.sql.*"%>
-<%!
-private Connection conn = null;
-public void jspInit(){
-	try {
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "banking", "banking");
-	System.out.println("Connected:" + conn);
-	} catch (ClassNotFoundException e) {
-	System.err.println("ShowLogin_Servlet->unable to load the JDBC Driver...");
-	} catch (SQLException e) {
-	System.err.println("ShowLogin_Servlet->unable to establish the database connection...");
-	}
-}
-%>
 <div class="Mainheader" style="background-image: linear-gradient(to right, #f3751f , #292e7d);">
 <img src="images/lti_logo.png">
 </div>
@@ -87,32 +73,13 @@ public void jspInit(){
 <th>Balance</th>
 <th>Recent Transactions</th>
 </tr>
-<%
-String SQL = "SELECT * FROM USER_DETAILS";
-StringBuffer strHTML = new StringBuffer();
-
-try {
-PreparedStatement pstat = conn.prepareStatement(SQL);
-
-ResultSet rs = pstat.executeQuery();
-while (rs.next()) {
-int accNo = rs.getInt("ACCOUNTNO");
-int bal = rs.getInt("BALANCE");
-%>
+<c:forEach items="${ userdetails }" var="users">
 <tr>
-<td><%= accNo %></td>
-<td><%= bal %></td>
-<td><input type="radio" name="accountNo" value="<%= accNo %>"></td>
+<td>${ users.accountNo }</td>
+<td>${ users.balance }</td>
+<td><input type="radio" name="accountNo" value="${ users.accountNo }"></td>
 </tr>
-<%
-}
-%>
-<%
-rs.close();
-} catch (SQLException e) {
-e.printStackTrace();
-}
-%>
+</c:forEach>
 </table>
 <input class="submitbtn" type="submit" value="click for previous 10 transactions">
 </form>
